@@ -1,0 +1,29 @@
+.container {
+  align-content: center;
+}
+.col-12 {
+  background-color: #282c34;
+  color: White;
+}
+.hide {
+  user-select: none;
+}
+h1 {
+  font-size: 68px;
+}
+html,
+body {
+  height: 100%;
+}
+.pastWord {
+  background-color: springgreen;
+  color: rgb(40, 0, 40);
+}
+.currentWord {
+  background-color: maroon;
+  color: white;
+}
+.h3 {
+  background-color: black;
+  color: #d0d0d0;
+}
