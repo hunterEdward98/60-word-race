@@ -9,7 +9,7 @@ class LeaderBoards extends React.Component {
                         <table className='table table-dark'>
                             <thead>
                                 <tr>
-                                    <th colspan='3' className='h3'>LEADERBOARDS</th>
+                                    <th colSpan='3' className='h3'>LEADERBOARDS</th>
                                 </tr>
                                 <tr>
                                     <th scope='col'>RANK</th>

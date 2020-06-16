@@ -13,6 +13,7 @@ class PlayerBlock extends React.Component {
     validate = () => {
         const typed = this.state.formTyped.split(' ');
         const validation = this.state.validation;
+        console.log(typed, validation);
         let equal = true;
         for (let i in validation) {
             const word = validation[i];
