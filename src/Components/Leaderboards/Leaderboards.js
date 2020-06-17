@@ -25,6 +25,7 @@ class LeaderBoards extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
+                                {this.getRecords()}
                                 {this.props.records.map((x, i) => <tr key={x.username + i}><th scope='row'>#{i + 1}</th><td>{x.username}</td><td>{(x.recordtime / 10)}s</td></tr>)}
                             </tbody>
                         </table>
@@ -34,4 +35,3 @@ class LeaderBoards extends React.Component {
         )
     }
 }
-export default connect()(LeaderBoards);

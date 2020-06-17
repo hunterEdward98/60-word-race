@@ -66,13 +66,11 @@ class App extends React.Component {
           <div className='row col-12 text-center justify-content-center'>
             < Header />
             <div className='container my-5'><hr /></div>
-
             {/* IF THE username IS NOT SET, ADD THE FORM. OTHERWISE, SEND IN THE PLAYERBLOCK */}
             {this.state.yourName === '' ?
               <Form typed={this.state.typed} handleChange={this.HandleChangeName} setPlayer={this.setPlayer} />
               : <PlayerBlock name={this.state.yourName} validation={this.state.message} clear={this.submitPlayer} />}
           </div>
-
           <div className='container my-5'><hr /></div>
           <LeaderBoards data={this.getRecords} />
           <Footer version={this.state.version} />
