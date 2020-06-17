@@ -2,6 +2,7 @@ import React from 'react'
 import DisplayInput from './DisplayInput/DisplayInput';
 import PlayerName from './PlayerName/PlayerName';
 import DisplayText from './DisplayText/DisplayText';
+import swal from 'sweetalert';
 
 class PlayerBlock extends React.Component {
     state = {
@@ -13,17 +14,21 @@ class PlayerBlock extends React.Component {
     }
     validate = () => {
         const typed = this.state.formTyped.split(' ');
-        const validation = this.state.validation;
-        console.log(typed, validation);
-        let equal = true;
-        for (let i in validation) {
-            const word = validation[i];
-            if (typed[i] !== word) {
-                equal = false;
+        if (typed.length === this.state.validation.length) {
+            const validation = this.state.validation;
+            console.log(typed, validation);
+            let equal = true;
+            for (let i in validation) {
+                const word = validation[i];
+                if (typed[i] !== word) {
+                    return false
+                }
             }
+            console.log(equal);
+            return equal;
         }
-        console.log(equal);
-        return equal;
+        swal(`you can't do that`)
+        return false;
     }
     HandleChangeForm = (event) => {
         this.setState({
