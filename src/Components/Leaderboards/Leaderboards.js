@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-class LeaderBoards extends React.Component {
+export default class LeaderBoards extends React.Component {
     getRecords = () => {
         axios.get('/list/winners').then((response) => {
             const { dispatch } = this.props;
