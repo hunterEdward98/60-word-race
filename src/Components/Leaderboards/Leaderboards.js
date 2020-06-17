@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-export default class LeaderBoards extends React.Component {
+class LeaderBoards extends React.Component {
     getRecords = () => {
         axios.get('/list/winners').then((response) => {
             const { dispatch } = this.props;
@@ -35,3 +35,9 @@ export default class LeaderBoards extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return ({
+        records: state.records
+    })
+}
+export default connect(mapStateToProps)(LeaderBoards)
