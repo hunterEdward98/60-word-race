@@ -6,6 +6,7 @@ import './App.css';
 import PlayerBlock from '../PlayerBlock/PlayerBlock';
 import axios from 'axios';
 import LeaderBoards from '../Leaderboards/Leaderboards';
+import { connect } from 'react-redux'
 
 class App extends React.Component {
   state = {
@@ -33,6 +34,8 @@ class App extends React.Component {
     this.setState({
       yourName: this.state.nameTyped
     })
+    const { dispatch } = this.props;
+    dispatch({ type: 'SET_TIME', payload: new Date() })
   }
   HandleChangeName = (event) => {
     this.setState({
@@ -79,4 +82,9 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    time: state.time
+  };
+}
+export default connect(mapStateToProps)(App);

@@ -12,8 +12,17 @@ const list = (state = [], action) => {
   }
   return newState;
 }
+const time = (state = 0, action) => {
+  let newState = state;
+  console.log(action.payload)
+  if (action.type === 'SET_TIME') {
+    newState = action.payload;
+  }
+  return newState;
+}
 const storeInstance = createStore(
   combineReducers({
+    time: time,
     records: list,
   }))
 ReactDOM.render(

@@ -32,12 +32,10 @@ router.get('/new', (req, res) => {
     queryText = 'SELECT * FROM words';
     pool.query(queryText).then((response) => {
         const data = response.rows;
-        console.log(data);
         while (newList.length < 15) {
             const rando = (Math.floor(Math.random() * 83) + 1)
             newList.push(data[rando].word)
         }
-        console.log(newList);
         res.send(newList);
     })
 })
