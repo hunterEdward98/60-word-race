@@ -1,6 +1,13 @@
 import React from 'react'
-
+import axios from 'axios'
+import { connect } from 'react-redux'
 class LeaderBoards extends React.Component {
+    getRecords = () => {
+        axios.get('/list/winners').then((response) => {
+            const { dispatch } = this.props;
+            dispatch({ type: 'GET_RECORDS', payload: response.data })
+        })
+    }
     render() {
         return (
             <div className='container'>
@@ -18,7 +25,8 @@ class LeaderBoards extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.props.data.map((x, i) => <tr key={x.Name + i}><th scope='row'>#{i + 1}</th><td>{x.Name}</td><td>{x.Time}</td></tr>)}
+                                {this.getRecords()}
+                                {this.props.records.map((x, i) => <tr key={x.username + i}><th scope='row'>#{i + 1}</th><td>{x.username}</td><td>{(x.recordtime / 10)}s</td></tr>)}
                             </tbody>
                         </table>
                     </div>
@@ -27,4 +35,9 @@ class LeaderBoards extends React.Component {
         )
     }
 }
-export default LeaderBoards;
+const mapStateToProps = (state) => {
+    return {
+        records: state.records
+    };
+}
+export default connect(mapStateToProps)(LeaderBoards);

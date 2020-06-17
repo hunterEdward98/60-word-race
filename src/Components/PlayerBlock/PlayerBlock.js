@@ -8,7 +8,8 @@ class PlayerBlock extends React.Component {
         formTyped: '',
         name: this.props.name,
         validation: this.props.validation,
-        submitted: false
+        submitted: false,
+        time: new Date()
     }
     validate = () => {
         const typed = this.state.formTyped.split(' ');
@@ -31,7 +32,8 @@ class PlayerBlock extends React.Component {
     }
     sendForm = () => {
         if (this.validate() === true) {
-            this.props.clear();
+            let totalTime = Math.ceil((new Date() - this.state.time) / 100);
+            this.props.clear(totalTime, this.state.name);
         }
     }
     render() {

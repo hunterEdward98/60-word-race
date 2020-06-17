@@ -10,7 +10,6 @@ import LeaderBoards from '../Leaderboards/Leaderboards';
 class App extends React.Component {
   state = {
     yourName: '',
-    winners: [{ Name: 'AnonymousCat', Time: '2:00' }, { Name: 'AnonymousWeasel', Time: '2:30' }, { Name: 'Anonym0usHack3r', Time: '3:00' }, { Name: 'AnonymousDog', Time: '3:15' }, { Name: 'AnonymousEagle', Time: '3:30' }],
     message: [],
     nameTyped: '',
     formTyped: '',
@@ -18,15 +17,11 @@ class App extends React.Component {
     difference: '',
     version: '0.0.3',
     time: 0,
-    submitted: false
   }
-  submitPlayer = () => {
-    axios.post('/players').then((response) => {
+  submitPlayer = (time, username) => {
+    axios.post(`/list/players/${username}/${time}`).then((response) => {
       this.clearPlayer();
     });
-    this.setState({
-      submitted: true
-    })
   }
   clearPlayer = () => {
     this.setState({
@@ -38,23 +33,6 @@ class App extends React.Component {
     this.setState({
       yourName: this.state.nameTyped
     })
-    this.handleTimer();
-  }
-  handleTimer = () => {
-    setInterval(() => {
-      this.setState({ time: this.state.time + 1 })
-      if (this.state.submitted) {
-        this.setState({
-          time: 0
-        })
-        clearInterval();
-      }
-    }, 1000);
-  }
-  resetTimer = () => {
-    clearInterval()
-    const time = this.state.time;
-    console.log(time);
   }
   HandleChangeName = (event) => {
     this.setState({
@@ -66,6 +44,7 @@ class App extends React.Component {
       message: []
     })
   }
+
   getList = () => {
     axios.get('/list/new').then((response) => {
       console.log(response.data);
@@ -85,14 +64,14 @@ class App extends React.Component {
             < Header />
             <div className='container my-5'><hr /></div>
 
-            {/* IF THE USERNAME IS NOT SET, ADD THE FORM. OTHERWISE, SEND IN THE PLAYERBLOCK */}
+            {/* IF THE username IS NOT SET, ADD THE FORM. OTHERWISE, SEND IN THE PLAYERBLOCK */}
             {this.state.yourName === '' ?
               <Form typed={this.state.typed} handleChange={this.HandleChangeName} setPlayer={this.setPlayer} />
-              : <PlayerBlock name={this.state.yourName} validation={this.state.message} clear={this.clearPlayer} />}
+              : <PlayerBlock name={this.state.yourName} validation={this.state.message} clear={this.submitPlayer} />}
           </div>
 
           <div className='container my-5'><hr /></div>
-          <LeaderBoards data={this.state.winners} />
+          <LeaderBoards data={this.getRecords} />
           <Footer version={this.state.version} />
         </div >
       </div>

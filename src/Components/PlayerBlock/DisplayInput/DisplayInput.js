@@ -7,7 +7,7 @@ const DisplayInput = (props) => {
                     <textarea rows='10' className='col-10 col-md-8' value={props.text} onChange={event => props.setCurrentText(event)}></textarea>
                 </div>
 
-                <div className='btn btn-success' onClick={event => props.submitText(event)}>DONE</div>
+                <div className='btn btn-success' onClick={event => props.submitText('event')}>DONE</div>
             </div>
         </div>
     )

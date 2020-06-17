@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App';
 import * as serviceWorker from './serviceWorker';
-
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+const list = (state = [], action) => {
+  let newState = [];
+  if (action.type === 'GET_RECORDS') {
+    newState = action.payload;
+  }
+  return newState;
+}
+const storeInstance = createStore(
+  combineReducers({
+    records: list,
+  }))
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={storeInstance}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
