@@ -27,7 +27,7 @@ class PlayerBlock extends React.Component {
             console.log(equal);
             return equal;
         }
-        swal(`you can't do that`)
+        swal(`Stop! You've violated the law!`)
         return false;
     }
     HandleChangeForm = (event) => {
