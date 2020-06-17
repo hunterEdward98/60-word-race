@@ -16,7 +16,7 @@ class App extends React.Component {
     formTyped: '',
     winner: '',
     difference: '',
-    version: '0.0.3',
+    version: '0.1.0',
     time: 0,
   }
   submitPlayer = (time, username) => {
