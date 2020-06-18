@@ -33,7 +33,7 @@ const words = (state = [], action) => {
 const time = (state = 0, action) => {
   let newState = state;
   if (action.type === 'SET_TIME') {
-    newState = action.payload;
+    newState = new Date();
   }
   return newState;
 }
