@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 class App extends React.Component {
   state = {
-    version: '0.1.0',
+    version: '0.2.1',
   }
 
   render() {
