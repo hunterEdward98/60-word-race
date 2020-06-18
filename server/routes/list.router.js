@@ -16,7 +16,7 @@ router.post('/players/:name/:time', (req, res) => {
 
 // GET Route
 router.get('/winners', (req, res) => {
-    const queryText = 'SELECT * FROM winners ORDER BY recordtime ASC LIMIT 20';
+    const queryText = 'SELECT * FROM winners ORDER BY recordtime ASC LIMIT 25';
     pool
         .query(queryText)
         .then((result) => {
