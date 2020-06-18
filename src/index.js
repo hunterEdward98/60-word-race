@@ -12,9 +12,26 @@ const list = (state = [], action) => {
   }
   return newState;
 }
+const name = (state = '', action) => {
+  let newState = state;
+  if (action.type === 'SET_PLAYER') {
+    newState = action.payload;
+  }
+  return newState
+}
+const words = (state = [], action) => {
+
+  let newState = [...state];
+  if (action.type === 'GET_WORDS') {
+    newState = action.payload;
+  }
+  if (action.type === 'CLEAR_WORDS') {
+    newState = [];
+  }
+  return newState;
+}
 const time = (state = 0, action) => {
   let newState = state;
-  console.log(action.payload)
   if (action.type === 'SET_TIME') {
     newState = action.payload;
   }
@@ -24,6 +41,8 @@ const storeInstance = createStore(
   combineReducers({
     time: time,
     records: list,
+    words: words,
+    name: name,
   }))
 ReactDOM.render(
   <Provider store={storeInstance}>

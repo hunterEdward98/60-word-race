@@ -14,7 +14,8 @@ class PlayerName extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        time: (new Date() - state.time) / 1000
+        time: (new Date() - state.time) / 1000,
+        name: state.name
     };
 }
 export default connect(mapStateToProps)(PlayerName);
