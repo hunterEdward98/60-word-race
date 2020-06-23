@@ -10,7 +10,7 @@ router.post('/players/:name/:time', (req, res) => {
     pool.query(queryText, [id, time]).then((response) => {
         res.sendStatus(201);
     }).catch((error) => {
-        res.sendStatus('ERROR', 500);
+        res.sendStatus(500);
     });
 }); // END PUT Route
 
@@ -23,7 +23,8 @@ router.get('/winners', (req, res) => {
             res.send(result.rows);
         })
         .catch((error) => {
-            console.log(`Error while making query: ${queryText}\nERRCODE: ${error}`)
+            console.log(`Error while making query: ${queryText}\nERRCODE: ${error}`);
+            res.sendStatus(500);
         })
 
 });

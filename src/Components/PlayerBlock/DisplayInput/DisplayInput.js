@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import swal from 'sweetalert'
 class DisplayInput extends React.Component {
     state = {
         formTyped: '',
@@ -26,7 +27,10 @@ class DisplayInput extends React.Component {
     }
     submitPlayer = (time, username) => {
         axios.post(`/list/players/${username}/${time}`).then((response) => {
+            swal(`${username}, your time of ${time / 10} SECONDS is in the database.`);
             this.clearPlayer();
+        }).catch((response) => {
+            swal(`ERROR: there was an internal server error while trying to post to the leaderboard`)
         });
     }
     clearPlayer = () => {
