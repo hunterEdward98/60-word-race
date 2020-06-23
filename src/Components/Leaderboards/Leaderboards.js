@@ -26,7 +26,7 @@ class LeaderBoards extends React.Component {
                             </thead>
                             <tbody>
                                 {this.getRecords()}
-                                {this.props.records.map((x, i) => <tr key={x.username + i}><th scope='row'>#{i + 1}</th><td>{x.username}</td><td>{(x.recordtime / 10)}s</td></tr>)}
+                                {this.props.records.map((x, i) => <tr key={x.username + i}><th scope='row'>#{i + 1}</th><td>{x.username}</td><td>{(x.min / 10)}s</td></tr>)}
                             </tbody>
                         </table>
                     </div>
