@@ -27,7 +27,7 @@ class DisplayInput extends React.Component {
     }
     submitPlayer = (time, username) => {
         axios.post(`/list/players/${username}/${time}`).then((response) => {
-            swal(`${username}, your time of ${time / 10} SECONDS is in the database.`);
+            swal(`${username}, your time of ${Math.floor(15 / (x.time / 10) * 600) / 10} Words Per Minute is in the database.`);
             this.clearPlayer();
         }).catch((response) => {
             swal(`ERROR: there was an internal server error while trying to post to the leaderboard`)
