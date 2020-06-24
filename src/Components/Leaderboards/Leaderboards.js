@@ -21,12 +21,12 @@ class LeaderBoards extends React.Component {
                                 <tr>
                                     <th scope='col'>RANK</th>
                                     <th scope='col'>NAME</th>
-                                    <th scope='col'>TIME</th>
+                                    <th scope='col'>FASTEST SPEED</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.getRecords()}
-                                {this.props.records.map((x, i) => <tr key={x.username + i}><th scope='row'>#{i + 1}</th><td>{x.username}</td><td>{(15 / (x.min / 10)) * 60}s</td></tr>)}
+                                {this.props.records.map((x, i) => <tr key={x.username + i}><th scope='row'>#{i + 1}</th><td>{x.username}</td><td>{Math.floor((15 / (x.min) * 60)) / 10} Words Per Minute</td></tr>)}
                             </tbody>
                         </table>
                     </div>
