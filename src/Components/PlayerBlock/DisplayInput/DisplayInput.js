@@ -7,6 +7,9 @@ class DisplayInput extends React.Component {
         formTyped: '',
         typed: false
     }
+    componentDidMount() {
+        this.setTime('SET_TIME_ZERO')
+    }
     clearList = () => {
         const dispatch = this.props.dispatch;
         dispatch({ type: 'CLEAR_WORDS', payload: [] });
@@ -39,7 +42,7 @@ class DisplayInput extends React.Component {
     }
     HandleChangeForm = (event) => {
         if (this.state.typed === false) {
-            this.setTime()
+            this.setTime('SET_TIME')
             this.setState({
                 formTyped: event.target.value,
                 typed: true
@@ -49,11 +52,10 @@ class DisplayInput extends React.Component {
             formTyped: event.target.value,
         });
     }
-    setTime = () => {
+    setTime = (type) => {
         const dispatch = this.props.dispatch
         dispatch({
-            type: 'SET_TIME',
-            payload: ''
+            type: type
         })
 
     }

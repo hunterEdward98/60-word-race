@@ -6,7 +6,7 @@ class PlayerName extends React.Component {
         return (
             <div className='row justify-content-center' >
                 <div className='col-12'>
-                    <h3 className='col-6 text-left'>{this.props.time}</h3></div>
+                    <h3 className='col-6 text-left'>TIME: {this.props.time === 0 ? 0 : (this.props.date - this.props.time) / 1000}</h3></div>
                 <h2 className='col-6'>{this.props.name}</h2>
             </div>
         )
@@ -14,7 +14,8 @@ class PlayerName extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        time: (new Date() - state.time) / 1000,
+        date: new Date(),
+        time: state.time,
         name: state.name
     };
 }

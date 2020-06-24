@@ -35,6 +35,9 @@ const time = (state = 0, action) => {
   if (action.type === 'SET_TIME') {
     newState = new Date();
   }
+  if (action.type === 'SET_TIME_ZERO') {
+    newState = 0;
+  }
   return newState;
 }
 const storeInstance = createStore(
